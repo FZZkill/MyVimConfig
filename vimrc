@@ -112,8 +112,8 @@ map <F2> :E <CR>
 
 map ; :
 "--Keymaps
-map cc <C-w>t<C-w>H
-map mm <C-w>t<C-w>K
+map cm <C-w>t<C-w>H
+map cc <C-w>t<C-w>K
 
 map <up> :res +5 <CR>
 map <down> :res -5 <CR>
@@ -135,6 +135,10 @@ nmap <silent> fm <Plug>MarkdownPreview
 nmap <silent> fo <Plug>StopMarkdownPreview
 ""
 
+"--airline--"
+let g:airline_theme='quantum'
+"air--line"
+
 "--Vim--"
 set background=dark
 
@@ -150,6 +154,13 @@ let g:mkdp_browser='firefox'
 let g:ranger_map_keys = 0
 
 "--Ranger--"
+
+"--autoformat--
+noremap fc :Autoformat<CR>
+let g:autoformat_verbosemode=1
+
+"--autoformat--""
+
 
 "--Netrw--"
 let g:netrw_liststyle = 3
@@ -218,7 +229,6 @@ let g:rbpt_colorpairs = [
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-autocmd VimEnter *  AirlineTheme gruvbox_material
 autocmd VimEnter *  colorscheme gruvbox-material
 autocmd VimEnter *  RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -313,7 +323,6 @@ Plug 'tenfyzhong/CompleteParameter.vim'
 Plug 'mhinz/vim-startify'
 Plug 'tpope/vim-fugitive'
 Plug 'francoiscabrol/ranger.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
@@ -321,10 +330,17 @@ Plug 'yggdroot/indentline'
 Plug 'chriskempson/base16-vim'
 
 Plug 'terryma/vim-multiple-cursors'
-Plug 'junegunn/fzf.vim'
 " Vim Color
 Plug 'morhetz/gruvbox'
-
+Plug 'yuttie/inkstained-vim'
 Plug 'sainnhe/gruvbox-material'
+Plug 'tyrannicaltoucan/vim-quantum'
+" 多光标
+Plug 'mg979/vim-visual-multi'
+
+"格式化
+Plug 'Chiel92/vim-autoformat'
+"Cmake
+Plug 'vhdirk/vim-cmake'
 call plug#end()
 
