@@ -42,7 +42,7 @@ set scrolloff=5
 set sidescrolloff=4
 syntax on
 " syn on
-
+syntax sync minlines=64
 "t
 set t_Co=256
 set textwidth=80
@@ -229,6 +229,7 @@ let g:rbpt_colorpairs = [
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
+
 autocmd VimEnter *  colorscheme gruvbox-material
 autocmd VimEnter *  RainbowParenthesesToggle
 au Syntax * RainbowParenthesesLoadRound
@@ -328,6 +329,14 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
 Plug 'yggdroot/indentline'
 Plug 'chriskempson/base16-vim'
+
+Plug 'preservim/nerdcommenter'
+"TypeScript
+Plug 'leafgarland/typescript-vim'
+
+"HTML
+
+Plug 'mattn/emmet-vim'
 
 Plug 'terryma/vim-multiple-cursors'
 " Vim Color
