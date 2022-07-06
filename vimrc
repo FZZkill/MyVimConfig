@@ -1,110 +1,37 @@
-"d
-
-"e
-set encoding=utf8
-set expandtab
-
-"f
-set fo=cqrt
-
-"g
-"h
-set helplang=cn
-
-"i
-set incsearch
-
-"j
-"k
-"l
-set laststatus=2
-set linebreak
-
-
-"m
-
-"n
-set number 
-set nocompatible "Not share vi
-set hls
-
-"o
-"p
-"q
-"r
-set ruler
-
-"s
-set showcmd
-set noshowmode
-set shiftwidth=4
-set scrolloff=5
-set sidescrolloff=4
-syntax on
-" syn on
-syntax sync minlines=64
-"t
-set t_Co=256
-set textwidth=80
-set tabstop=4
-
-"u
-"v
-"w
-set ww=<,>,h,l
-set wildmenu
-set wrap
-set wrapmargin=2
-
-"x
-"y
-"z
-
-let mapleader = ","
-
-filetype indent on
-filetype on
-filetype plugin on
-filetype indent on
-"--Vim set--"
-set laststatus=2
-set t_Co=256
-
-"""
 "--table-mode--"""
 let g:table_mode_corner = '|'
 let g:table_mode_border=0
 let g:table_mode_fillchar='='
 
 function! s:isAtStartOfLine(mapping)
-  let text_before_cursor = getline('.')[0 : col('.')-1]
-  let mapping_pattern = '\V' . escape(a:mapping, '\')
-  let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
-  return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
+    let text_before_cursor = getline('.')[0 : col('.')-1]
+    let mapping_pattern = '\V' . escape(a:mapping, '\')
+    let comment_pattern = '\V' . escape(substitute(&l:commentstring, '%s.*$', '', ''), '\')
+    return (text_before_cursor =~? '^' . ('\v(' . comment_pattern . '\v)?') . '\s*\v' . mapping_pattern . '\v$')
 endfunction
 
 inoreabbrev <expr> <bar><bar>
-          \ <SID>isAtStartOfLine('\|\|') ?
-          \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
+            \ <SID>isAtStartOfLine('\|\|') ?
+            \ '<c-o>:TableModeEnable<cr><bar><space><bar><left><left>' : '<bar><bar>'
 inoreabbrev <expr> __
-          \ <SID>isAtStartOfLine('__') ?
-          \ '<c-o>:silent! TableModeDisable<cr>' : '__'
+            \ <SID>isAtStartOfLine('__') ?
+            \ '<c-o>:silent! TableModeDisable<cr>' : '__'
 
 "--table-mode--""
 
 "--Keymaps--"
 map U <nop>
 map c <nop>
+map S <nop>
 map m <nop>
-map <F2> <nop> 
+map <F2> <nop>
 map <F1> <nop>
 
 map } $
 map fp :PlugInstall<CR>
 
 map Q :q <CR>
-map E :wq <CR>
-map W :w <CR>
+map E :w <CR>
 map U <C-r>
 map <F12> :term <CR>
 map <F1> :Ranger <CR>
@@ -121,11 +48,17 @@ map <left> :vertical resize-5 <CR>
 map <right> :vertical resize+5 <CR>
 
 map e <C-w>w
+inoremap <C-h> <Left>
+inoremap <C-j> <Down>
+inoremap <C-k> <Up>
+inoremap <C-l> <Right>
+
+noremap <C-x> <Esc>lxi
+noremap <C-X> <Esc>llxhi
 "--Keymaps--"
 
 "--auto-pairs--"
 au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
-au FileType php      let b:AutoPairs = AutoPairsDefine({'<?' : '?>', '<?php': '?>'})
 "--auto-pairs--"
 
 ""
@@ -142,7 +75,7 @@ let g:airline_theme='quantum'
 "--Vim--"
 set background=dark
 
- colorscheme gruvbox-material
+colorscheme gruvbox-material
 "--Vim--"
 
 "--MarkDown--"
@@ -170,7 +103,7 @@ let g:netrw_winsize = 100
 
 "--Netrw--"
 " enable this plugin for filetypes, '*' for all files.
-let g:apc_enable_ft = {'text':1, 'markdown':1, 'php':1}
+let g:apc_enable_ft = {'text':1, 'markdown':1}
 
 " source for dictionary, current or other loaded buffers, see ':help cpt'
 set cpt=.,k,w,b
@@ -210,22 +143,22 @@ highlight Pmenu ctermfg=3 ctermbg=3 guifg=#c0c0c0 guibg=#000000
 
 "--rainbow--"
 let g:rbpt_colorpairs = [
-    \ ['brown',       'RoyalBlue3'],
-    \ ['Darkblue',    'SeaGreen3'],
-    \ ['darkgray',    'DarkOrchid3'],
-    \ ['darkgreen',   'firebrick3'],
-    \ ['darkcyan',    'RoyalBlue3'],
-    \ ['darkred',     'SeaGreen3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['brown',       'firebrick3'],
-    \ ['gray',        'RoyalBlue3'],
-    \ ['darkmagenta', 'DarkOrchid3'],
-    \ ['Darkblue',    'firebrick3'],
-    \ ['darkgreen',   'RoyalBlue3'],
-    \ ['darkcyan',    'SeaGreen3'],
-    \ ['darkred',     'DarkOrchid3'],
-    \ ['red',         'firebrick3'],
-    \ ]
+            \ ['brown',       'RoyalBlue3'],
+            \ ['Darkblue',    'SeaGreen3'],
+            \ ['darkgray',    'DarkOrchid3'],
+            \ ['darkgreen',   'firebrick3'],
+            \ ['darkcyan',    'RoyalBlue3'],
+            \ ['darkred',     'SeaGreen3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['brown',       'firebrick3'],
+            \ ['gray',        'RoyalBlue3'],
+            \ ['darkmagenta', 'DarkOrchid3'],
+            \ ['Darkblue',    'firebrick3'],
+            \ ['darkgreen',   'RoyalBlue3'],
+            \ ['darkcyan',    'SeaGreen3'],
+            \ ['darkred',     'DarkOrchid3'],
+            \ ['red',         'firebrick3'],
+            \ ]
 
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
@@ -242,9 +175,9 @@ nnoremap mv :+tabnext<CR>
 nnoremap mc :-tabnext<CR>
 hi Normal  ctermfg=252 ctermbg=none
 "MD.VIM
-let g:vim_markdown_folding_disabled = 1  
-let g:vim_markdown_override_foldtext = 0  
-let g:vim_markdown_folding_level = 6    
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_override_foldtext = 0
+let g:vim_markdown_folding_level = 6
 let g:vim_markdown_no_default_key_mappings = 1
 let g:vim_markdown_emphasis_multiline = 0
 set conceallevel=2
@@ -275,36 +208,38 @@ let g:mdip_imgname = 'image'
 autocmd FileType markdown nnoremap <silent> <C-p> :call mdip#MarkdownClipboardImage()<CR>F%i
 "设置tagber对于markdown的支持
 let g:tagbar_type_markdown = {
-    \ 'ctagstype' : 'markdown',
-    \ 'kinds' : [
-        \ 'h:Chapter',
-        \ 'i:Section',
-        \ 'k:Paragraph',
-        \ 'j:Subparagraph'
-    \ ]
-\ }
+            \ 'ctagstype' : 'markdown',
+            \ 'kinds' : [
+            \ 'h:Chapter',
+            \ 'i:Section',
+            \ 'k:Paragraph',
+            \ 'j:Subparagraph'
+            \ ]
+            \ }
 let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsJumpForwardTrigger = '<tab>' 
-let g:UltiSnipsJumpBackwardTrigger = '<S-tab>' 
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
 let g:UltiSnipsSnippetDirectories=["path/of/snippetDirectories"]
 let g:UltiSnipsEditSplit="vertical"
 
 "Plug.vim
 call plug#begin('~/.vim/plugged')
 if has('win32') || has('win64')
-  Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
+    Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
 else
-  Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-endif 
-"Markdown
-Plug 'vim-airline/vim-airline'
+    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
+endif
+
+"airline and its themes
+Plug 'vim-airline/vim-airline'      
 Plug 'vim-airline/vim-airline-themes'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'dag/vim-fish'
+
+Plug 'kien/rainbow_parentheses.vim' "彩虹括号
+Plug 'dag/vim-fish' "fish terminal
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 Plug 'majutsushi/tagbar'
-Plug 'rust-lang/rust.vim'
+Plug 'rust-lang/rust.vim' "vim rust
 Plug 'suan/vim-instant-markdown'
 Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
@@ -312,23 +247,18 @@ Plug 'dhruvasagar/vim-table-mode'
 "YouCompleteMe
 Plug 'tabnine/YouCompleteMe'
 
-"Python
 Plug 'scrooloose/nerdtree'
-Plug 'scrooloose/syntastic'
-
-"PHP
-Plug 'shawncplus/phpcomplete.vim'
+Plug 'scrooloose/syntastic' "语法检查机
 
 Plug 'jiangmiao/auto-pairs'
 Plug 'tenfyzhong/CompleteParameter.vim'
-Plug 'mhinz/vim-startify'
+
 Plug 'tpope/vim-fugitive'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 
-Plug 'yggdroot/indentline'
-Plug 'chriskempson/base16-vim'
+Plug 'yggdroot/indentline'  "从此告别游标卡尺
 
 Plug 'preservim/nerdcommenter'
 "TypeScript
@@ -338,7 +268,6 @@ Plug 'leafgarland/typescript-vim'
 
 Plug 'mattn/emmet-vim'
 
-Plug 'terryma/vim-multiple-cursors'
 " Vim Color
 Plug 'morhetz/gruvbox'
 Plug 'yuttie/inkstained-vim'
