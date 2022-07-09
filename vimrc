@@ -29,6 +29,8 @@ map <F1> <nop>
 
 map } $
 map fp :PlugInstall<CR>
+map fs :PlugStatus<CR>
+map ff :FZF<CR>
 
 map Q :q <CR>
 map E :w <CR>
