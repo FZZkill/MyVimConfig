@@ -19,6 +19,7 @@ inoreabbrev <expr> __
 
 "--table-mode--""
 
+
 "--auto-pairs--"
 au Filetype FILETYPE let b:AutoPairs = {"(": ")"}
 "--auto-pairs--"
@@ -184,22 +185,15 @@ let g:UltiSnipsJumpBackwardTrigger = '<S-tab>'
 let g:UltiSnipsSnippetDirectories=["path/of/snippetDirectories"]
 let g:UltiSnipsEditSplit="vertical"
 
+let g:deoplete#enable_at_startup = 1
+
 "Plug.vim
 call plug#begin('~/.vim/plugged')
-if has('win32') || has('win64')
-    Plug 'tbodt/deoplete-tabnine', { 'do': 'powershell.exe .\install.ps1' }
-else
-    Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
-endif
+Plug 'tbodt/deoplete-tabnine', { 'do': './install.sh' }
 
-if has('nvim')
-      Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins'  }
-  else
-        Plug 'Shougo/deoplete.nvim'
-          Plug 'roxma/nvim-yarp'
-            Plug 'roxma/vim-hug-neovim-rpc'
-        endif
-        let g:deoplete#enable_at_startup = 1
+Plug 'Shougo/deoplete.nvim'
+Plug 'roxma/nvim-yarp'
+Plug 'roxma/vim-hug-neovim-rpc'
 "airline and its themes
 Plug 'vim-airline/vim-airline'      
 Plug 'vim-airline/vim-airline-themes'
@@ -215,7 +209,7 @@ Plug 'iamcco/mathjax-support-for-mkdp'
 Plug 'iamcco/markdown-preview.vim'
 Plug 'dhruvasagar/vim-table-mode'
 "YouCompleteMe
-Plug 'tabnine/YouCompleteMe'
+Plug 'ycm-core/YouCompleteMe'
 
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/syntastic' "语法检查机
@@ -227,7 +221,7 @@ Plug 'tpope/vim-fugitive'
 Plug 'francoiscabrol/ranger.vim'
 Plug 'neoclide/coc.nvim', {'branch': 'master', 'do': 'yarn install --frozen-lockfile'}
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-
+Plug 'junegunn/fzf'
 Plug 'yggdroot/indentline'  "从此告别游标卡尺
 
 Plug 'preservim/nerdcommenter'
